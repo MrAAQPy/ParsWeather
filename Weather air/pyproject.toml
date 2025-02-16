@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ParsWeather"
-version = "0.0.6"
+version = "0.0.8"
 description = "A Python package for getting Iran's weather data, including temperature and RealFeel."
 authors = [
     {name = "Ali Ayati Qaffari", email = "ayatiali910@gmail.com"}
@@ -24,7 +24,8 @@ dependencies = [
 
 [project.urls]
 "Profile" = "https://github.com/MrAAQPy"
-
+"github" = "https://github.com/MrAAQPy/ParsWeather"
+"issue" = "https://github.com/MrAAQPy/ParsWeather/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: ParsWeather
-Version: 0.0.6
+Version: 0.0.8
 Summary: A Python package for getting Iran's weather data, including temperature and RealFeel.
 Author-email: Ali Ayati Qaffari <ayatiali910@gmail.com>
 License: MIT License
@@ -26,6 +26,8 @@ License: MIT License
         SOFTWARE.
         
 Project-URL: Profile, https://github.com/MrAAQPy
+Project-URL: github, https://github.com/MrAAQPy/ParsWeather
+Project-URL: issue, https://github.com/MrAAQPy/ParsWeather/issues
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
 License-File: LICENSE

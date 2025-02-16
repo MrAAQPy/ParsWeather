@@ -73,6 +73,40 @@ class WeatherForecast:
     "یزد": "https://www.accuweather.com/fa/ir/yazd/211668/weather-forecast/211668"
     }
 
+    health_activities = {
+    "آذربایجان شرقی": "https://www.accuweather.com/fa/ir/tabriz/207308/health-activities/207308",
+    "آذربایجان غربی": "https://www.accuweather.com/fa/ir/urmia/207147/health-activities/207147",
+    "اردبیل": "https://www.accuweather.com/fa/ir/ardabil/206976/health-activities/206976",
+    "اصفهان": "https://www.accuweather.com/fa/ir/isfahan/208194/health-activities/208194",
+    "البرز": "https://www.accuweather.com/fa/ir/karaj/211367/health-activities/211367",
+    "ایلام": "https://www.accuweather.com/fa/ir/ilam/208937/health-activities/208937",
+    "بوشهر": "https://www.accuweather.com/fa/ir/bandar-bushehr/207502/health-activities/207502",
+    "تهران": "https://www.accuweather.com/fa/ir/tehran/210841/health-activities/210841",
+    "چهارمحال و بختیاری": "https://www.accuweather.com/fa/ir/shahr-e-kord/207539/health-activities/207539",
+    "خراسان جنوبی": "https://www.accuweather.com/fa/ir/birjand/209740/health-activities/209740",
+    "خراسان رضوی": "https://www.accuweather.com/fa/ir/mashhad/209737/health-activities/209737",
+    "خراسان شمالی": "https://www.accuweather.com/fa/ir/bojnurd/209467/health-activities/209467",
+    "خوزستان": "https://www.accuweather.com/fa/ir/ahvaz/210047/health-activities/210047",
+    "زنجان": "https://www.accuweather.com/fa/ir/zanjan/211728/health-activities/211728",
+    "سمنان": "https://www.accuweather.com/fa/ir/semnan/210904/health-activities/210904",
+    "سیستان و بلوچستان": "https://www.accuweather.com/fa/ir/zahedan/211207/health-activities/211207",
+    "فارس": "https://www.accuweather.com/fa/ir/shiraz/208538/health-activities/208538",
+    "قزوین": "https://www.accuweather.com/fa/ir/qazvin/210816/health-activities/210816",
+    "قم": "https://www.accuweather.com/fa/ir/qom/210842/health-activities/210842",
+    "کردستان": "https://www.accuweather.com/fa/ir/sanandaj/210185/health-activities/210185",
+    "کرمان": "https://www.accuweather.com/fa/ir/kerman/209375/health-activities/209375",
+    "کرمانشاه": "https://www.accuweather.com/fa/ir/kermanshah/209439/health-activities/209439",
+    "کهگیلویه و بویراحمد": "urhttps://www.accuweather.com/fa/ir/yasuj/210096/health-activities/210096l",
+    "گلستان": "https://www.accuweather.com/fa/ir/gorgan/208708/health-activities/208708",
+    "گیلان": "https://www.accuweather.com/fa/ir/rasht/208612/health-activities/208612",
+    "لرستان": "https://www.accuweather.com/fa/ir/khorramabad/210291/health-activities/210291",
+    "مازندران": "https://www.accuweather.com/fa/ir/sari/210584/health-activities/210584",
+    "مرکزی": "https://www.accuweather.com/fa/ir/arak/210434/health-activities/210434",
+    "هرمزگان": "https://www.accuweather.com/fa/ir/bandar-abbas/208929/health-activities/208929",
+    "همدان": "https://www.accuweather.com/fa/ir/hamedan/208760/health-activities/208760",
+    "یزد": "https://www.accuweather.com/fa/ir/yazd/211668/health-activities/211668"
+    }
+
     @classmethod
     def get_supported_cities(cls):
         """دریافت لیست شهرهای پشتیبانی‌شده"""
@@ -405,7 +439,6 @@ class WeatherForecast:
         else:
             return None, None, f"خطا در دریافت داده‌ها: {response.status_code}", "توضیحات یافت نشد"
 
-
     @classmethod
     def get_weather_forecast_air_aqi(cls,city_name):
         '''دریافت اطلاعات الودگی برای چند روز'''
@@ -436,3 +469,36 @@ class WeatherForecast:
             })
 
         return forecast_data    
+    
+    @classmethod    
+    def get_health_activities(cls,city_name):
+        url = cls.health_activities.get(city_name)
+        if not url:
+            return "شهر مورد نظر پیدا نشد."
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+
+        response = requests.get(url, headers=headers)
+    
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            health_cards = soup.find_all('a', class_='index-list-card')
+
+            if not health_cards:
+                return "هیچ اطلاعاتی یافت نشد."
+
+            results = []
+            for card in health_cards:
+                title_tag = card.find('div', class_='index-name')
+                status_tag = card.find('div', class_='index-status-text')
+
+                if title_tag and status_tag:
+                    title = title_tag.text.strip()
+                    status = status_tag.text.strip()
+                    results.append(f"{title}: {status}")
+
+            return results
+    
+        else:
+            return f"خطا در دریافت صفحه: {response.status_code}"

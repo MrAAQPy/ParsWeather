@@ -1,3 +1,41 @@
+Metadata-Version: 2.2
+Name: ParsWeather
+Version: 0.1.0
+Summary: A Python package for getting Iran's weather data, including temperature and RealFeel.
+Author-email: Ali Ayati Qaffari <ayatiali910@gmail.com>
+License: MIT License
+        
+        Copyright (c) 2025 Ali Ayati Qaffari
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Profile, https://github.com/MrAAQPy
+Project-URL: github, https://github.com/MrAAQPy/ParsWeather
+Project-URL: issue, https://github.com/MrAAQPy/ParsWeather/issues
+Project-URL: bale, https://ble.ir/aaq1386
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: beautifulsoup4
+Requires-Dist: lxml
+Requires-Dist: requests
+
 
 <h1 align="center">
   <img src="https://s6.uupload.ir/files/11zon_cropped_(1)_nev9.png" alt="ParsWeather Logo" width="150">
@@ -32,7 +70,7 @@ No need for complex setups – just a few lines of code and you're good to go! H
 ```python
 from ParsWeather import WeatherForecast as wf  
 
-city = "تهران"  # 📍 Replace with the city you want to check
+city = "Tehran"  # 📍 Replace with the city you want to check
 
 print(f"🌡️ Current Temperature: {wf.get_temperature(city)}°C")  
 print(f"🤔 Real Feel Temperature: {wf.get_realfeel(city)}°C")  
@@ -120,4 +158,6 @@ Here’s a more complete footer for the **ParsWeather** package documentation, i
 © 2025 **ParsWeather** – All rights reserved.  
 
 This project is developed and maintained by **Ali Ayati Qaffari**. Unauthorized use, distribution, or reproduction of any part of this package without explicit permission is prohibited.
+
+
 

@@ -28,25 +28,113 @@ pip install ParsWeather
 ## 🚀 How to Use – It's Easy and Fun!  
 
 No need for complex setups – just a few lines of code and you're good to go! Here's an example:  
+بله، حالا کد به زبان انگلیسی آماده شده است و شما می‌توانید نام شهرها را به انگلیسی وارد کنید:
 
+### 1. **Current Temperature**
 ```python
 from ParsWeather import WeatherForecast as wf  
 
-city = "تهران"  # 📍 Replace with the city you want to check
+city = "Tehran"  # 📍 Replace with the city you want to check (e.g., Tehran)
 
-print(f"🌡️ Current Temperature: {wf.get_temperature(city)}°C")  
-print(f"🤔 Real Feel Temperature: {wf.get_realfeel(city)}°C")  
-print(f"🍃 Air Quality: {wf.get_air_quality(city)}")  
-print(f"📊 Air Quality Index (AQI): {wf.get_air_quality_aqi(city)}")  
-print(f"🏜️ Dust & Allergen Levels: {wf.get_dust_dander_data(city)}")  
-print(f"🌦️ Full Weather Forecast: {wf.get_weather_forecast(city)}")  
-print(f"🛰️ Radar Image Link: {wf.get_radar_image_link(city)}")  
-print(f"🌅 Sunrise & Sunset Times: {wf.get_sun_times(city)}")  
-print(f"🔎 Detailed Weather Forecast: {wf.get_forecast_details(city)}")  
-print(f"📍 Supported Cities List: {wf.get_supported_cities()}")  
-print(f"🌍 Combined Weather & AQI: {wf.get_weather_forecast_air_aqi(city)}")  
+# Current Temperature
+print(f"🌡️ Current Temperature: {wf.get_temperature(city)}°C")
 ```
 
+### 2. **Real Feel Temperature**
+```python
+# Real Feel Temperature
+print(f"🤔 Real Feel Temperature: {wf.get_realfeel(city)}°C")
+```
+
+### 3. **Air Quality**
+```python
+# Air Quality
+print(f"🍃 Air Quality: {wf.get_air_quality(city)}")
+```
+
+### 4. **Air Quality Index (AQI)**
+```python
+# Air Quality Index (AQI)
+print(f"📊 Air Quality Index (AQI): {wf.get_air_quality_aqi(city)}")
+```
+
+### 5. **Dust & Allergen Levels**
+```python
+# Dust & Allergen Levels
+print(f"🏜️ Dust & Allergen Levels: {wf.get_dust_dander_data(city)}")
+```
+
+### 6. **Full Weather Forecast**
+```python
+# Full Weather Forecast
+print(f"🌦️ Full Weather Forecast: {wf.get_weather_forecast(city)}")
+```
+
+### 7. **Radar Image Link**
+```python
+# Radar Image Link
+print(f"🛰️ Radar Image Link: {wf.get_radar_image_link(city)}")
+```
+
+### 8. **Sunrise & Sunset Times**
+```python
+# Sunrise & Sunset Times
+print(f"🌅 Sunrise & Sunset Times: {wf.get_sun_times(city)}")
+```
+
+### 9. **Detailed Weather Forecast**
+```python
+# Detailed Weather Forecast
+print(f"🔎 Detailed Weather Forecast: {wf.get_forecast_details(city)}")
+```
+
+### 10. **Combined Weather & AQI**
+```python
+# Combined Weather & AQI
+print(f"🌍 Combined Weather & AQI: {wf.get_weather_forecast_air_aqi(city)}")
+```
+
+### 11. **Radar GIF Link**
+```python
+# Radar GIF Link
+print(f"🛰️ Radar GIF Link:{wf.download_specific_image()}")
+```
+
+### 12. **Pollutant Data**
+```python
+# Pollutant Data
+pollutant_data = wf.get_pollutant_info(city)
+if isinstance(pollutant_data, dict):
+    for pollutant, info in pollutant_data.items():
+        print(pollutant)
+        print(f"{info['concentration']}")
+        print(f"{info['statement']}")
+        print('-' * 50)
+else:
+    print(pollutant_data)
+```
+
+### 13. **Earth Satellite Image URL**
+```python
+# Earth Satellite Image URL
+image_url = wf.get_earth_satellite_image_url()
+print(image_url)
+```
+
+### 14. **Daily Weather Forecast**
+```python
+# Daily Weather Forecast
+daily_forecast = wf.get_daily_weather_info(city, "12/25")  # You can replace with any date
+print(daily_forecast)
+```
+
+---
+
+### **Important Notes**:
+1. **City Names**: Replace `city` with the name of the city you want to check in English (e.g., `Tehran` instead of `تهران`).
+2. **Dates**: For daily weather forecasts, you can input the date in the format `"MM/DD"`, for example, `"12/25"` for December 25th.
+
+With these changes, the code will work smoothly for any city, and the outputs will be provided in English.
 🎯 Just plug in your city name and get precise, real-time weather updates! It's that simple!
 
 ---
